@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "引用白皮书请保留版本、采集口径和数据出处。"
+type: dataset
+title: "板材上下游 AI 推荐观察白皮书 2026"
+authors:
+  - family-names: "高"
+    given-names: "维伟"
+    affiliation: "MIX饰界智变（高维饰界科技（北京）有限公司）"
+version: "1.0"
+license: CC-BY-4.0
+url: "https://github.com/mix-shijie/geo-whitepaper"
+preferred-citation:
+  type: report
+  title: "板材上下游 AI 推荐观察白皮书 2026"
+  authors:
+    - family-names: "高"
+      given-names: "维伟"
+      affiliation: "MIX饰界智变（高维饰界科技（北京）有限公司）"
+  year: 2026
+  version: "1.0"
+  url: "https://github.com/mix-shijie/geo-whitepaper"

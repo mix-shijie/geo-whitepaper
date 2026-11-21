@@ -1,0 +1,157 @@
+{
+  "version": "1.0",
+  "brand_notice": "统计的是 AI 回答中的出现情况，不代表产品质量、企业规模或市场份额。",
+  "industry_web": {
+    "date_beijing": "2026-11-17",
+    "technical_basis": "网页前端，境外网络，已登录，记忆未记录",
+    "answers": 120,
+    "questions": 20,
+    "citations": 1486,
+    "brand_count": 36,
+    "brand_mentions": 452,
+    "branded_answers": 62,
+    "top5_covered": 51,
+    "top5_mentions": 168,
+    "selected_brands": [
+      {
+        "label": "千*舟",
+        "mentions": 43,
+        "first": 4
+      },
+      {
+        "label": "万*禾香",
+        "mentions": 36,
+        "first": 4
+      },
+      {
+        "label": "*宝宝",
+        "mentions": 34,
+        "first": 18
+      },
+      {
+        "label": "山东*丽",
+        "mentions": 28,
+        "first": 13
+      },
+      {
+        "label": "莫*山",
+        "mentions": 27,
+        "first": 1
+      },
+      {
+        "label": "奥地利*格",
+        "mentions": 21,
+        "first": 11
+      }
+    ],
+    "source_entries": {
+      "豆包": {
+        "category": "抖音",
+        "count": 146,
+        "category_total": 146
+      },
+      "元宝": {
+        "category": "公众号",
+        "count": 38,
+        "category_total": 38
+      },
+      "千问": {
+        "category": "聚合页",
+        "count": 104,
+        "category_total": 153
+      },
+      "DeepSeek": {
+        "category": "知乎",
+        "count": 57,
+        "category_total": 57
+      }
+    },
+    "overlap": {
+      "Q09": {
+        "kind": "品牌题",
+        "platforms": [
+          0.87,
+          0.69,
+          0.55,
+          0.47
+        ],
+        "mean": 0.645
+      },
+      "Q11": {
+        "kind": "品牌题",
+        "platforms": [
+          0.52,
+          0.76,
+          0.71,
+          0.9
+        ],
+        "mean": 0.7225
+      },
+      "Q13": {
+        "kind": "方法题",
+        "platforms": [
+          0.58,
+          0.15,
+          0.17,
+          0
+        ],
+        "mean": 0.225
+      }
+    },
+    "qwen_localized": 10,
+    "qwen_answers": 30,
+    "q17": {
+      "sheet": "4x8",
+      "platforms": 4,
+      "e1_or_e2_platforms": 3,
+      "e1_only_platforms": 2,
+      "e1_and_e2_platforms": 1,
+      "m3_per_sheet": {
+        "4x8": 0.0536,
+        "4x9": 0.0604
+      }
+    }
+  },
+  "domestic_app": {
+    "date_beijing": "2026-11-17",
+    "date_note": "部分分享页显示 11-18",
+    "technical_basis": "中国辽宁大连网络，App 对照，登录与记忆未独立核验",
+    "answers": 62,
+    "cities": {
+      "大连": {
+        "distinct": 49,
+        "two_or_more": 10,
+        "one_only": 39
+      },
+      "西安": {
+        "distinct": 75,
+        "two_or_more": 9,
+        "one_only": 66
+      }
+    },
+    "qwen_dalian_map_reviews": 58,
+    "price_answers": {
+      "total": 8,
+      "stated_4x8": 6,
+      "thickness_only": 2
+    }
+  },
+  "mix_zero": {
+    "date_beijing": "2026-11-17",
+    "technical_basis": "网页前端，境外网络，已登录，记忆未记录",
+    "questions": 12,
+    "rounds_planned": 3,
+    "planned": 144,
+    "answers": 82,
+    "platform_counts": {
+      "豆包": 33,
+      "元宝": 36,
+      "千问": 2,
+      "DeepSeek": 11
+    },
+    "generic_hits": 0,
+    "generic_answers": 45,
+    "named_recognized": 0,
+    "named_answers": 37
+  }
+}

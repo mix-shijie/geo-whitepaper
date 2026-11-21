@@ -1,0 +1,77 @@
+/* Release reader. All assets are embedded for offline use. */
+:root {
+  --ink: #1d2126;
+  --gold: #946821;
+  --light-gold: #fbf6ec;
+  --line: #ded7c9;
+  --muted: #4a5059;
+  font: 16px/1.75 "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  color: var(--ink);
+  background: #f7f7f5;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: var(--gold); text-underline-offset: .2em; }
+a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.mast { display: flex; justify-content: space-between; align-items: center; min-height: 55px;
+  padding: 0 max(5vw, calc((100vw - 1050px) / 2)); background: var(--ink); }
+.mast a { white-space: nowrap; color: #f0d8ae; text-decoration: none; font-weight: 700; }
+.sheet { max-width: 1050px; margin: auto; background: white; }
+.hero { padding: 70px clamp(22px, 7vw, 92px) 52px; border-top: 5px solid #ba893e; background: var(--light-gold); }
+.hero h1 { font: 800 clamp(34px, 5.2vw, 59px)/1.2 "Songti SC", SimSun, serif;
+  max-width: 17em; margin: 0 0 .52em; letter-spacing: .015em; }
+.title-edition { white-space: nowrap; }
+.hero p { margin: .62em 0; color: var(--muted); }
+.hero p:first-of-type { font-size: 1.18em; color: var(--gold); }
+nav { padding: 28px clamp(22px, 7vw, 92px) 36px; border-bottom: 1px solid var(--line); }
+nav h2 { font-size: 1.15em; margin: 0 0 .65em; }
+.links { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 24px; }
+.links a { padding: 7px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.links a:hover { text-decoration: underline; }
+main { padding: 20px clamp(22px, 7vw, 92px) 60px; }
+main h2 { font-size: 1.8em; margin: 1.3em 0 .6em; padding-top: .55em; border-top: 2px solid #d9bf94; }
+main h3 { font-size: 1.25em; margin: 1.3em 0 .55em; }
+p { margin: .7em 0; }
+li { margin: .38em 0; }
+ol, ul { padding-left: 1.75em; }
+table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: .95em; }
+th, td { padding: .55em .72em; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+th { background: var(--light-gold); color: #6e4b15; }
+th:first-child { min-width: 4em; }
+blockquote { margin: 1em 0; padding: .15em .9em; border-left: 3px solid #ba893e;
+  background: var(--light-gold); overflow-wrap: anywhere; }
+figure { margin: 1.3em 0; }
+figure img { width: 100%; display: block; }
+@media (max-width: 600px) {
+  .hero { padding-top: 42px; padding-bottom: 34px; }
+  .links { grid-template-columns: 1fr; }
+  main h2 { font-size: 1.5em; }
+  th, td { padding: .45em .3em; overflow-wrap: anywhere; }
+  table { font-size: .87em; }
+}
+@page {
+  size: A4;
+  margin: 14mm 17mm 15mm;
+  @bottom-left { content: "MIX饰界智变  /  GEO 白皮书 2026"; font-size: 8pt; color: #665842; }
+  @bottom-right { content: counter(page) " / " counter(pages); font-size: 8pt; color: #665842; }
+}
+@media print {
+  :root { background: white; font-size: 9.8pt; line-height: 1.55; print-color-adjust: exact; }
+  .mast { display: none; }
+  .sheet { max-width: none; }
+  .cover { break-after: page; }
+  .hero { padding: 16mm 9mm; }
+  .hero h1 { font-size: 32pt; }
+  nav { padding: 8mm 1mm; }
+  main { padding: 0; }
+  main h2, main h3 { break-after: avoid; }
+  p, li { widows: 2; orphans: 2; }
+  tr, figure, blockquote { break-inside: avoid; }
+  thead { display: table-header-group; }
+  table:not(:has(tbody tr:nth-child(8))) { break-inside: avoid; }
+  #chapter-3-2 + p, #chapter-5 + p { break-after: avoid; }
+  table { margin-block: .8em; }
+  th, td { padding: .38em .52em; }
+  figure img { width: 100%; max-height: 70mm; object-fit: contain; }
+  a { text-decoration: none; }
+}
