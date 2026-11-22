@@ -4,7 +4,7 @@
 
 高维伟 · MIX饰界智变（高维饰界科技（北京）有限公司）
 
-采样于 2026 年 11 月 · [聚合数据](data/observations.json) · [数据字典](data/data-dictionary.md) · [AI 自查说明](AGENTS.md)
+采样于 2026 年 11 月 · [聚合数据](data/observations.json) · [数据字典](data/data-dictionary.md) · [AI 自查说明](AGENTS.md) · [互动版报告](report/index.html)
 
 ## 0. 摘要｜十条关键发现
 

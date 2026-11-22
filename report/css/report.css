@@ -1,0 +1,209 @@
+/* AI 眼中的你 · 报告与星图统一的外观
+   加载顺序：film.css → report-base.css → 本文件（覆盖）→ report-v31.css → public.css。
+   只改外观，不改报告的内容和数据口径。浅色打印主题仍用 Codex 的 @media print，这里只补新元素的隐藏规则。 */
+@media screen {      /* 只改屏幕配色；打印仍用 Codex 的浅色变量 */
+  :root { --bg: #04060a; --panel: rgba(12, 17, 26, .72); --line: rgba(220, 205, 175, .14); --ink: #f0e7d7; --muted: rgba(233, 223, 205, .62); background: #04060a; }
+  html, body { background: #04060a; }
+}
+:root { font-family: var(--sans); }
+
+/* ---------- 两个视图 ---------- */
+#film-view, #report-view { position: fixed; inset: 0; }
+#film-view { background: #000; z-index: 1; }
+#report-view { z-index: 2; isolation: isolate; color: var(--ink); }
+body:not(.view-film) #film-view { display: none; }
+body:not(.view-report) #report-view { display: none; }
+#starbg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; display: block; }
+.fatal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; font: 20px/1.9 var(--sans); color: var(--ink); background: #04060a; padding: 40px; }
+
+/* ---------- 顶部模式标记 ---------- */
+#modebar { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 12px;
+  font: 13px/1 var(--sans); letter-spacing: .06em; color: var(--muted); padding: 7px 14px; border: 1px solid rgba(220, 182, 111, .32); background: rgba(4, 6, 10, .72); white-space: nowrap; }
+#modebar b { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); display: inline-block; }
+#modebar.demo b { background: #8fa7c4; }
+#modebar.demo { border-color: rgba(143, 167, 196, .4); }
+#modebar a { color: var(--gold); text-decoration: none; border-left: 1px solid var(--line); padding-left: 12px; pointer-events: auto; }
+#modebar a:hover { text-decoration: underline; }
+
+/* ---------- 星图里新增的元素 ---------- */
+#ui button { border-radius: 0; }
+#ui .bar { display: block; min-height: 0; grid-template-columns: none; gap: 0; }
+#ui .nav .nav-report { color: var(--gold); border-color: rgba(220, 182, 111, .6); margin-left: calc(var(--u) * 10px); }
+#ui .to-report { position: absolute; right: 5.4%; bottom: 8%; opacity: 0; visibility: hidden; pointer-events: auto;
+  font-family: var(--serif); font-size: calc(var(--u) * 30px); letter-spacing: .12em; color: var(--ink);
+  padding: calc(var(--u) * 16px) calc(var(--u) * 34px); border: 1px solid rgba(220, 182, 111, .7); background: rgba(4, 6, 10, .55);
+  box-shadow: 0 0 calc(var(--u) * 40px) rgba(220, 182, 111, .12); }
+#ui .to-report span { display: block; font-family: var(--sans); font-size: calc(var(--u) * 15px); letter-spacing: .1em; color: var(--gold); margin-top: calc(var(--u) * 6px); }
+#ui .to-report:hover { color: var(--gold); border-color: var(--gold); }
+.vertical #ui .to-report { right: 50%; transform: translateX(50%); bottom: 4%; }
+.lab-brand.focus { color: var(--gold); font-weight: 600; }
+.lab-brand.focus .n { color: var(--gold); }
+.lab-brand small { display: block; font-size: calc(var(--u) * 16px); color: var(--muted); font-weight: 400; margin-top: calc(var(--u) * 3px); }
+
+/* ---------- 报告：和星图同一套字体与色彩 ---------- */
+#report-view h1, .report-page h1 { font-family: var(--serif); font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+#report-view h2, #report-view h3 { font-family: var(--serif); font-weight: 500; }
+.eyebrow { font-family: var(--sans); letter-spacing: .42em; font-size: 12px; color: var(--gold); opacity: .9; }
+.sub { font-family: var(--sans); color: var(--muted); }
+.logo { font-family: var(--serif); font-weight: 600; letter-spacing: .12em; color: var(--ink); text-decoration: none; }
+.logo .logo-orbit { color: var(--gold); }
+.logo small { font-family: var(--sans); font-weight: 400; }
+.number strong, .score, .bar strong, td:not(:first-child), #navigation > span, .tile, .peer-cloud span {
+  font-family: var(--serif); font-variant-numeric: lining-nums tabular-nums; }
+.number strong { font-weight: 600; letter-spacing: -.01em; }
+.score { font-weight: 600; letter-spacing: -.02em; }
+.score small { font-family: var(--sans); }
+.number span { font-family: var(--sans); color: var(--ink); }
+.bar > span { font-family: var(--sans); }
+.bar > div { background: rgba(160, 150, 130, .12); height: 10px; border-radius: 0; }
+.bar b { border-radius: 0; opacity: .9; box-shadow: 0 0 14px rgba(220, 182, 111, .18); }
+.bars { justify-content: center; gap: clamp(14px, 2.6vh, 34px); }
+.method { font-family: var(--sans); color: var(--muted); }
+.conclusion, .price-lead { font-family: var(--serif); font-weight: 600; color: var(--ink); }
+.quotes blockquote, .empty, .price-evidence article { background: var(--panel); border-color: var(--line); backdrop-filter: blur(2px); }
+.tag-cloud span { border-radius: 0; border-color: rgba(220, 182, 111, .4); font-family: var(--serif); }
+.grain { border-color: rgba(220, 205, 175, .08); }
+footer { font-family: var(--sans); color: rgba(233, 223, 205, .42); }
+footer span { color: rgba(233, 223, 205, .55); }
+#report-view button, #report-view select { border-radius: 0; background: rgba(8, 11, 17, .8); border-color: rgba(233, 223, 205, .22); color: var(--muted); font-family: var(--sans); }
+#report-view button:hover, #report-view select:hover { color: var(--gold); border-color: rgba(220, 182, 111, .7); }
+#pdf { color: var(--gold) !important; border-color: rgba(220, 182, 111, .55) !important; }
+#pdfHint { position: absolute; top: 94px; right: 64px; z-index: 21; margin: 0; max-width: 46%; text-align: right; font: 12px/1.6 var(--sans); color: rgba(233, 223, 205, .45); }
+.vertical #pdfHint { top: 150px; right: 65px; max-width: 70%; }
+.clean #pdfHint, .clean #pagedots { display: none; }
+
+/* 第 6 页：Codex v1 的"待补充"框是 flex:0，内容会溢出、压到下面的说明文字；改成按内容高度 */
+.report-page[data-page="6"] > .empty { flex: none; }
+.report-page[data-page="6"] .price-evidence { min-height: 0; }
+
+/* 页码点：可直接跳到任意一页 */
+#pagedots { position: absolute; left: 50%; bottom: 44px; transform: translateX(-50%); z-index: 20; display: flex; gap: 6px; }
+#pagedots button { padding: 6px 8px; font: 12px/1 var(--serif); letter-spacing: .04em; min-width: 34px; }
+#pagedots button.on { color: var(--gold); border-color: rgba(220, 182, 111, .75); }
+.vertical #pagedots { bottom: 100px; flex-wrap: wrap; justify-content: center; width: 640px; }
+
+/* ---------- 打印（浅色 A4）：新元素一律不打印 ---------- */
+@media print {
+  #modebar, #film-view, #starbg, #pdfHint, #pagedots { display: none !important; }
+  #report-view { position: static; display: block !important; isolation: auto; color: var(--ink); }
+  html, body { background: var(--bg) !important; height: auto !important; overflow: visible !important; }   /* 星图样式给 html 设了 overflow:hidden，会把打印裁成 1 页 */
+  .bar b { box-shadow: none; }
+  .quotes blockquote, .empty, .price-evidence article { backdrop-filter: none; }
+}
+body.print-mode #modebar, body.print-mode #pdfHint, body.print-mode #pagedots { display: none; }
+body.print-mode #report-view { position: static; }
+html:has(body.print-mode), body.print-mode { height: auto; overflow: auto; }
+.lab-band.flip { text-align: right; }
+
+/* 第 6 页：真实研究里一家平台最多 8 条报价，卡片里的字缩小一点、"待补充"压成一行，尽量不出现卡片内滚动 */
+@media screen {
+  .report-page[data-page="6"] { gap: 14px; }
+  .report-page[data-page="6"] > .empty { flex-direction: row; align-items: baseline; gap: 18px; padding: 12px 24px; }
+  .report-page[data-page="6"] > .empty h2 { font-size: 19px; white-space: nowrap; }
+  .report-page[data-page="6"] > .empty p { font-size: 16px; }
+  .report-page[data-page="6"] .price-evidence article { padding: 14px 20px; }
+  .report-page[data-page="6"] .price-evidence h3 { margin-bottom: 6px; font-size: 24px; }
+  .report-page[data-page="6"] .price-kind h4 { margin: 8px 0 4px; padding-bottom: 4px; font-size: 14px; }
+  .report-page[data-page="6"] .price-kind p { margin: 4px 0; line-height: 1.25; font-size: 16px; }
+  .report-page[data-page="6"] .price-kind p > span { font-size: 14px; display: inline; margin-right: .6em; }
+  .report-page[data-page="6"] .price-kind p strong { font-size: 19px; }
+  .report-page[data-page="6"] .price-kind p small { display: inline; margin: 0 0 0 .4em; font-size: 11px; }
+  .report-page[data-page="6"] .q07-card, .report-page[data-page="6"] .price-reference { font-size: 16px; }
+}
+#ui .nav button[data-i] { min-width: calc(var(--u) * 34px); }
+@media screen {
+  .report-page[data-page="6"] .price-kind p { margin: 1px 0; }
+  .report-page[data-page="6"] .price-kind h4 { margin: 5px 0 2px; }
+  .report-page[data-page="6"] .price-evidence article { padding: 10px 18px; }
+  .report-page[data-page="6"] .q07-card { padding: 6px 20px; }
+  .report-page[data-page="6"] > .empty > span { white-space: nowrap; }
+}
+@media screen {
+  .report-page[data-page="6"] { gap: 10px; }
+  .report-page[data-page="6"] .report-heading { padding-bottom: 12px; }
+  .report-page[data-page="6"] .sub { margin-top: 8px; }
+}
+/* 场景 1 打出的是原题 Q01（20 个字），竖屏放不下一行：允许折行 */
+.vertical .question { white-space: nowrap; font-size: calc(var(--u) * 56px); line-height: 1.45; }
+#ui .nav { bottom: 1.1%; }
+
+/* ================= v3 ================= */
+/* 底部解说字幕：一行，居中；?nosub 关掉 */
+.subline { position: absolute; left: 50%; bottom: 3.0%; transform: translateX(-50%); width: max-content; max-width: 78%; text-align: center; white-space: nowrap; opacity: 0;
+  font-family: var(--sans); font-size: calc(var(--u) * 30px); line-height: 1.4; letter-spacing: .06em; color: #f4ecdd;
+  text-shadow: 0 0 calc(var(--u) * 10px) rgba(0, 0, 0, .9), 0 0 calc(var(--u) * 3px) rgba(0, 0, 0, .95); }
+.vertical .subline { bottom: 3.6%; font-size: calc(var(--u) * 36px); max-width: 94%; white-space: normal; }
+body.has-sub .tb.bc { bottom: 8.8%; }                         /* 有字幕时，原来压在底部的结论和小字上移，给字幕让位 */
+.vertical.has-sub .tb.bc, body.has-sub .vertical .tb.bc { bottom: 9.5%; }
+.vertical.has-sub .tb.bc.sheetsbox { bottom: 7.4%; }
+body.has-sub:not(.clean) #ui .nav { bottom: 1.1%; }
+.notext .subline { display: none; }
+/* 场景 6 */
+.mid { font-family: var(--serif); font-weight: 500; font-size: calc(var(--u) * 34px); line-height: 1.5; color: var(--ink); margin-top: calc(var(--u) * 8px); letter-spacing: .02em; }
+.mid em { font-style: normal; color: var(--gold); }
+.vertical .mid { font-size: calc(var(--u) * 40px); }
+.small.us { margin-top: calc(var(--u) * 6px); color: var(--ink); opacity: .78; }
+.lab-city { font-family: var(--serif); font-weight: 600; font-size: calc(var(--u) * 34px); letter-spacing: .12em; color: var(--ink); }
+.lab-city small { display: block; font-family: var(--sans); font-weight: 400; font-size: calc(var(--u) * 18px); letter-spacing: .04em; color: var(--muted); margin-top: calc(var(--u) * 4px); }
+.lab-cnt { font-family: var(--sans); font-size: calc(var(--u) * 15px); color: var(--muted); line-height: 1.25; }
+.lab-cnt b { display: block; font-family: var(--serif); font-weight: 600; font-size: calc(var(--u) * 30px); color: var(--ink); }
+.lab-cnt small { font-size: calc(var(--u) * 14px); }
+.lab-emit { font-size: calc(var(--u) * 20px); letter-spacing: .06em; color: var(--ink); }
+.lab-ent { font-size: calc(var(--u) * 14px); color: var(--gold); opacity: .9; letter-spacing: .04em; }
+.vertical .lab-cnt b { font-size: calc(var(--u) * 34px); }
+.vertical .lab-cnt small { font-size: calc(var(--u) * 16px); }
+.vertical .lab-emit { font-size: calc(var(--u) * 24px); }
+/* 浏览器不允许自动出声时：点一下开始 */
+#tapstart { display: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 30; pointer-events: auto; cursor: pointer;
+  background: rgba(4, 6, 10, .6); border: 1px solid rgba(220, 182, 111, .6); color: var(--ink); font-family: var(--serif); font-size: calc(var(--u) * 34px); letter-spacing: .2em;
+  padding: calc(var(--u) * 22px) calc(var(--u) * 48px); }
+#tapstart span { display: block; margin-top: calc(var(--u) * 10px); font-family: var(--sans); font-size: calc(var(--u) * 15px); letter-spacing: .04em; color: var(--muted); }
+#tapstart:hover { border-color: var(--gold); }
+/* 报告第 10 页：在你的城市 */
+.geo-note { font-size: 15px; color: var(--gold); border: 1px solid rgba(220, 182, 111, .35); padding: 6px 14px; align-self: flex-start; flex-shrink: 0; }
+.city-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex-shrink: 0; }
+.city-cards article { border: 1px solid var(--line); background: var(--panel); padding: 14px 22px; display: flex; align-items: center; gap: 28px; }
+.city-cards h2 { font-family: var(--serif); font-size: 30px; color: var(--ink); min-width: 120px; line-height: 1.3; }
+.city-cards h2 small { display: block; font-family: var(--sans); font-size: 14px; color: var(--muted); }
+.city-nums { display: flex; gap: 26px; }
+.city-nums div { display: flex; flex-direction: column; }
+.city-nums strong { font-family: var(--serif); font-size: 44px; line-height: 1.05; color: var(--gold); font-weight: 600; font-variant-numeric: lining-nums tabular-nums; }
+.city-nums div:first-child strong { color: var(--ink); }
+.city-nums span { font-size: 14px; color: var(--muted); }
+.city-lines { font-size: 17px; color: var(--ink); opacity: .85; flex-shrink: 0; line-height: 1.6; }
+.city-lines b { color: var(--gold); font-weight: 500; }
+.city-table { font-size: 16px; flex: 1 1 auto; }
+.city-table th { font-size: 14px; padding: 6px 12px; }
+.city-table td { padding: 7px 12px; vertical-align: top; }
+.city-table td:not(:first-child) { font-family: var(--sans); font-size: 15px; width: 44%; }
+.city-table td:first-child { font-size: 18px; white-space: nowrap; width: 10%; }
+.city-table td b { font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--ink); margin-right: 8px; }
+.city-table td small { color: var(--muted); font-size: 13px; }
+.ent-chips { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+.ent-chips i { font-style: normal; font-family: var(--serif); font-size: 12px; min-width: 24px; text-align: center; padding: 1px 3px; border: 1px solid rgba(233, 223, 205, .16); color: var(--muted); }
+.ent-chips i.sh { border-color: rgba(220, 182, 111, .75); color: var(--gold); }
+/* 报告第 11 页：怎么改 */
+.draft-badge { align-self: flex-start; font-size: 15px; letter-spacing: .2em; color: var(--gold); border: 1px dashed rgba(220, 182, 111, .6); padding: 6px 16px; flex-shrink: 0; }
+.action-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; flex: 1; min-height: 0; }
+.action-cols section { border-top: 2px solid var(--gold); background: var(--panel); padding: 16px 22px; display: flex; flex-direction: column; min-height: 0; }
+.action-cols h3 { font-family: var(--serif); font-size: 26px; font-weight: 600; margin-bottom: 8px; }
+.action-cols h3 span { font-family: var(--serif); color: var(--gold); margin-right: 12px; font-size: 20px; }
+.action-cols ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px; }
+.action-cols li { border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.action-cols li p { font-size: 19px; line-height: 1.7; }
+.action-cols li b { color: var(--gold); font-weight: 500; }
+.action-cols cite { display: block; text-align: right; font-style: normal; font-size: 13px; color: var(--gold); opacity: .8; margin-top: 4px; letter-spacing: .06em; }
+.vertical .city-cards { grid-template-columns: 1fr; gap: 14px; }
+.vertical .city-table td:not(:first-child) { width: 45%; }
+.vertical .action-cols { grid-template-columns: 1fr; gap: 14px; }
+.vertical .action-cols li p { font-size: 19px; }
+.vertical .city-lines { font-size: 19px; }
+@media print {
+  .city-cards article, .action-cols section { background: none; }
+  .city-nums strong { font-size: 28px; } .city-cards h2 { font-size: 20px; } .city-nums span, .city-cards h2 small { font-size: 9px; }
+  .city-lines { font-size: 10px; } .geo-note, .draft-badge { font-size: 9px; padding: 2px 8px; }
+  .city-table, .city-table td:not(:first-child) { font-size: 9px; } .city-table td:first-child { font-size: 10px; } .city-table td b { font-size: 13px; } .city-table td small, .city-table th { font-size: 8px; }
+  .city-table td, .city-table th { padding: 2mm 2mm; } .ent-chips i { font-size: 7px; min-width: 14px; padding: 0 1px; }
+  .action-cols { grid-template-columns: 1fr; gap: 4mm; } .action-cols h3 { font-size: 15px; } .action-cols li p { font-size: 10px; line-height: 1.55; } .action-cols cite { font-size: 8px; }
+  .action-cols ul { gap: 2mm; } .action-cols li { padding-bottom: 2mm; } .action-cols section { padding: 3mm 4mm; }
+}

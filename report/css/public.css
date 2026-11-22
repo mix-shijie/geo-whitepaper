@@ -1,0 +1,35 @@
+/* 公开版新增样式（MIX饰界智变 · 2026-11-21） */
+footer { max-width: 620px; font-size: 12px; line-height: 1.75; bottom: 22px; }
+.vertical footer { max-width: 760px; font-size: 18px; bottom: 26px; }
+footer #scope { color: rgba(233, 223, 205, .6); }
+footer a, .checkup a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(220, 182, 111, .45); }
+footer a:hover, .checkup a:hover { border-bottom-color: var(--gold); }
+#ui .nav button.on { color: var(--gold); border-color: rgba(220, 182, 111, .75); }
+.tag-cloud span small { font-size: .5em; color: var(--muted); font-family: var(--sans); }
+.summary-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.summary-cards article { border: 1px solid var(--line); background: var(--panel); padding: 22px 28px; }
+.summary-cards h3 { font-family: var(--serif); color: var(--gold); font-size: 22px; margin-bottom: 10px; }
+.summary-cards p { font-size: 20px; line-height: 1.75; }
+.vertical .summary-cards { grid-template-columns: 1fr; }
+.checkup { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 26px; }
+.checkup-lead { font-family: var(--serif); font-size: 34px; color: var(--muted); }
+.checkup-main { font-family: var(--serif); font-weight: 600; font-size: clamp(44px, 4.2vw, 80px); line-height: 1.45; color: var(--ink); }
+.checkup-main b { color: var(--gold); font-weight: 600; }
+.checkup-sub { font-size: 22px; color: var(--muted); }
+.checkup-wp { font-size: 20px; }
+.vertical .checkup-main { font-size: 76px; }
+@media print {
+  footer { display: block !important; position: static; color: #555; font-size: 9px; max-width: none; }
+  .summary-cards article { background: none; padding: 3mm; } .summary-cards p { font-size: 11px; } .summary-cards h3 { font-size: 13px; }
+  .checkup-main { font-size: 34px; } .checkup-lead, .checkup-sub, .checkup-wp { font-size: 13px; }
+}
+body.view-film.clean #modebar { display: none; }
+/* 竖屏（手机）：页码点放到页脚上方，正文区相应缩短 */
+.vertical main { height: calc(100vh - 395px); }
+.vertical #pagedots { bottom: 168px; }
+.vertical #navigation { bottom: 40px; }
+/* 顶部全局品牌切换 */
+#brandTop { max-width: 260px; }
+@media print { #brandTop, .brand-picker { display: none !important; } }
+.clean #report-view .topbar { display: flex !important; justify-content: flex-end; height: auto; padding: 26px 64px 0; }
+.clean #report-view .topbar .logo, .clean #report-view .toolbar > :not(#brandTop) { display: none !important; }

@@ -6,6 +6,8 @@
 
 **阅读版本**　[Markdown 正文](whitepaper.md) · [离线单页](whitepaper.html) · [A4 PDF](whitepaper.pdf)
 
+**互动版报告**　[星图影片 + 12 页报告](https://mix-shijie.github.io/geo-whitepaper/report/)（白皮书的互动附录，只含聚合统计，品牌名部分隐去）
+
 **目录**　摘要 · 术语 · 方法 · 发现 · 场景与内容自评 · 七类角色 · 全国与区域 · 合规 · 复测 · 附录
 
 - [聚合统计](data/observations.json)和[数据字典](data/data-dictionary.md)

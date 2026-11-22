@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+/* 手机：按 1080 宽（竖屏）或 1920 宽（横屏）排版，再由浏览器整体缩放，影片和报告都用设计尺寸显示 */
+(function () { var s = Math.min(screen.width, screen.height); if (s < 700) { var p = matchMedia('(orientation: portrait)').matches; document.querySelector('meta[name=viewport]').setAttribute('content', 'width=' + (p ? 1080 : 1920)); } })();
+</script>
+<title>AI 眼中的你 · 互动报告 | 板材上下游 AI 推荐观察白皮书</title>
+<meta name="description" content="《板材上下游 AI 推荐观察白皮书》的互动附录：把 120 条 AI 回答做成一部 3D 星图影片和 12 页报告。只含聚合统计，品牌名部分隐去。">
+<!-- 公开版（MIX饰界智变 · 2026-11-21）：只用聚合数据；没有 AI 回答原文、品牌原名、门店名，也不带配音文件。 -->
+<link rel="stylesheet" href="css/film.css">
+<link rel="stylesheet" href="css/report-base.css">
+<link rel="stylesheet" href="css/report.css">
+<link rel="stylesheet" href="css/report-v31.css">
+<link rel="stylesheet" href="css/public.css">
+</head>
+<body>
+<div id="modebar"></div>
+
+<div id="film-view">
+  <div id="stage">
+    <canvas id="gl"></canvas>
+    <div id="labels"></div>
+    <div id="text"></div>
+    <div id="ui"></div>
+  </div>
+</div>
+
+<div id="report-view">
+  <canvas id="starbg" aria-hidden="true"></canvas>
+  <div class="grain"></div>
+  <header class="topbar">
+    <a class="logo" href="#film" id="logo"><span class="logo-orbit">✳</span>AI 眼中的你<small>MIX · VISIBILITY OBSERVATORY</small></a>
+    <div class="toolbar">
+      <select id="dataset" aria-label="数据集"><option value="us">美国基线</option><option value="cn">国内对照</option><option value="mix">MIX 零点</option></select>
+      <select id="brandTop" aria-label="体检对象"></select>
+      <button id="toFilm">← 回到星图</button>
+      <button id="pdf">打印 / PDF</button>
+    </div>
+  </header>
+  <p id="pdfHint"></p>
+  <main id="content"></main>
+  <footer><span id="scope"></span></footer>
+  <div id="pagedots"></div>
+  <nav id="navigation"></nav>
+</div>
+
+<script src="js/boot.js"></script>
+<script src="vendor/three/build/three.min.js"></script>
+<script src="vendor/three/examples/js/shaders/CopyShader.js"></script>
+<script src="vendor/three/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="vendor/three/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="vendor/three/examples/js/postprocessing/RenderPass.js"></script>
+<script src="vendor/three/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="vendor/three/examples/js/postprocessing/UnrealBloomPass.js"></script>
+<script src="data/report-data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/film.js"></script>
+<script src="js/report-bg.js"></script>
+<script src="js/report.js"></script>
+<script>APP.start();</script>
+</body>
+</html>
